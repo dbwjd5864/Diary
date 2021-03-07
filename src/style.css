@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap');
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+button:focus,
+input:focus {
+  outline: 0;
+}
+
+body {
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #fcfcfc;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: 10vh 90vh 100vh;
+  width: 100vw;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-bar ul {
+  padding: 0px;
+}
+
+.nav-element {
+  list-style-type: none;
+  font-family: 'Nerko One', cursive;
+  font-size: 2em;
+}
+
+.today {
+  padding: 5px;
+  margin: 5px;
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+
+.listBox {
+  text-align: center;
+}
+
+.listBox fieldset {
+  border-radius: 10px 0px 10px 0px;
+  border: 5px solid #d5c3b0;
+  overflow: scroll;
+}
+
+legend {
+  font-size: 1.5em;
+  padding: 5px;
+}
+
+.toDo-list {
+  list-style-type: none;
+  padding-left: 0;
+  max-height: 150px;
+}
+
+.toDo-list svg {
+  padding: 4px;
+  padding-right: 6px;
+  margin-top: 2px;
+}
+
+.toDo-list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newSubmit {
+  background: #d5c3b0;
+}
+
+.newSubmit form {
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+input,
+.meal button {
+  border: 3px solid #f4ead8;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  font-size: 1em;
+  padding: 5px 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+input[type='text'] {
+  width: 60vw;
+}
+
+#datePicker {
+  border: none;
+  background-color: transparent;
+  text-align: center;
+}
+
+.newSubmit label {
+  border-bottom: 3px solid #f4ead8;
+  padding-bottom: 5px;
+  margin: 5px 0px;
+}
+
+.newSubmit input {
+  border: none;
+  background-color: #f4ead8;
+}
+
+.toDoButton {
+  border: none;
+  background-color: transparent;
+  color: #f4ead8;
+  font-size: 1.5em;
+  padding: 5px 10px 0 10px;
+  cursor: pointer;
+}
+
+.showDate button {
+  background: white;
+  border: none;
+}
+
+.calendar {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.calendarList {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.calendarContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.previousDate,
+.nextDate {
+  font-size: 1.5em;
+  color: #d5c3b0;
+}
+
+.diary {
+  background: #d5c3b0;
+}
+
+.meal {
+  display: grid;
+  align-items: center;
+  text-align: center;
+}
+
+.mealWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.meal input {
+  height: 1.3em;
+}
+
+.mealSearchButton {
+  border-radius: 4px;
+}
+
+.mealResult {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 10px;
+}
+
+.mealContainer {
+  cursor: pointer;
+  position: relative;
+  height: 70vw;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.mealContainer img {
+  height: 100%;
+  border: 5px #d5c3b0 solid;
+  border-radius: 5px;
+}
+
+.mealDetail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding-top: 5px;
+  background: rgba(213, 195, 176, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease-in;
+  opacity: 0;
+}
+
+.mealContainer:hover .mealDetail {
+  opacity: 1;
+}
+
+.mealName {
+  color: #f4ead8;
+  font-size: 3em;
+  font-family: 'Sansita Swashed', cursive;
+}
+
+.randomButton {
+  margin-left: 10px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.diary {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+
+.diaryImgContainer img {
+  width: 77%;
+  height: 80%;
+  position: absolute;
+  left: 45px;
+  top: 10px;
+}
+
+.diaryImgContainer {
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  position: relative;
+  margin: 40px;
+  max-height: 60vh;
+}
+
+.diaryPhotoBG {
+  width: 70%;
+  height: 81%;
+  background-color: #757475;
+  position: absolute;
+  top: 40px;
+  left: 110px;
+  z-index: -1;
+}
+
+#minMediaPhoto {
+  display: none;
+}
+
+.diarySpace {
+  padding-top: 20px;
+}
+
+.diaryHeading {
+  text-align: center;
+}
+
+.diaryForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  border: none;
+  background-color: #f4ead8;
+  border-radius: 4px;
+  margin-top: 30px;
+  width: 70vw;
+  margin-left: 30px;
+}
+
+.submitText {
+  border: none;
+  background-color: transparent;
+  color: indianred;
+  font-size: 2em;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.dearMyself {
+  border-bottom: 3px solid #f4ead8;
+  padding: 10px;
+}
+
+.todoFailure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type='text']:focus,
+textarea,
+button {
+  outline: 0;
+}
+
+.diaryForm .failure,
+.diaryForm .success {
+  margin-bottom: 20px;
+}
+
+.failure {
+  color: red;
+  font-size: 1.1em;
+}
+
+.success {
+  color: blue;
+  font-size: 1.1em;
+}
+
+.submitResult {
+  text-align: center;
+}
+
+.todoFailure {
+  margin-bottom: 4px;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    max-width: 85vw;
+    margin: auto;
+  }
+
+  .app {
+    width: auto;
+  }
+
+  .today {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 70% min-content;
+  }
+
+  .listBox fieldset {
+    height: 80%;
+  }
+
+  .newSubmit {
+    grid-column: 1/3;
+    grid-row: 2;
+  }
+
+  .newSubmit input[type='text'] {
+    width: 70%;
+  }
+
+  .diaryPhoto {
+    width: auto;
+  }
+
+  #minMediaPhoto {
+    display: block;
+    margin-left: 210px;
+    margin-top: 100px;
+    z-index: -1;
+  }
+
+  .diaryPhotoBG {
+    width: 300px;
+    z-index: -2;
+    left: 0;
+    top: 40px;
+    margin-left: 110px;
+  }
+
+  .diaryImgContainer img {
+    width: 300px;
+    height: 300px;
+    left: 0;
+    top: 10px;
+  }
+
+  .mealResultHeading {
+    margin-top: 60px;
+  }
+
+  .mealResult {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+  }
+
+  .mealContainer {
+    cursor: default;
+  }
+
+  .mealContainer img {
+    height: auto;
+    width: 100%;
+  }
+
+  .mealDetail {
+    opacity: 1;
+    position: relative;
+    background: rgb(213, 195, 176);
+    height: 50px;
+    margin-top: -10px;
+    z-index: -1;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  .mealName {
+    font-size: 100%;
+  }
+
+  .mealWrapper input {
+    width: 60vw;
+  }
+}
