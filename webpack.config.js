@@ -10,6 +10,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -20,9 +21,9 @@ module.exports = {
       },
       {
         test: /\.m?js$/,
+        exclude: /(node_modules)|(build)/,
         use: {
           loader: 'babel-loader',
-          exclude: /(node_modules)|(build)/,
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
           },
@@ -39,6 +40,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, './public/index.html'),
       filename: 'index.html',
@@ -51,6 +53,5 @@ module.exports = {
     //   disable: false,
     //   allChunks: true,
     // }),
-    new CleanWebpackPlugin(),
   ],
 };

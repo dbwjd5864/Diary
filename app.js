@@ -1,10 +1,9 @@
 const express = require('express');
 const app = express();
-
 const connection = require('./db/connection.js');
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static('build'));
 app.use(express.json());
 
 connection.once('open', () => {
