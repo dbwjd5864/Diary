@@ -7,6 +7,7 @@
     "frontend": "webpack --watch",
     "backend": "nodemon app.js",
     "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "build": "webpack --mode production",
     "start": "node app.js"
   },
   "repository": {
