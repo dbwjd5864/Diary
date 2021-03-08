@@ -10,6 +10,11 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
+  },
+  resolve: {
+    modules: [path.join(__dirname, 'node_modules')],
+    extensions: ['.js'],
   },
   module: {
     rules: [

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Today from './components/toDo/ToDoToday.js';
-import Diary from './components/diary/Diary.js';
+import ToDoToday from './components/todo/ToDoToday';
+import Diary from './components/diary/Diary';
 
 class App extends React.Component {
   render() {
@@ -13,7 +13,7 @@ class App extends React.Component {
               <li className="nav-element">How Is Your Day?</li>
             </ul>
           </nav>
-          <Today />
+          <ToDoToday />
           <Diary />
         </div>
       </>

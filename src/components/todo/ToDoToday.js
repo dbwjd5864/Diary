@@ -2,11 +2,11 @@ import React from 'react';
 import axios from 'axios';
 
 import ToDo from './ToDo.js';
-import ShowDate from './ToDoDate.js';
+import ToDoDate from './ToDoDate.js';
 
 import { FaPencilAlt } from 'react-icons/fa';
 
-class Today extends React.Component {
+class ToDoToday extends React.Component {
   _isMounted = false;
 
   constructor(props) {
@@ -321,7 +321,7 @@ class Today extends React.Component {
               )}
             </div>
           </div>
-          <ShowDate
+          <ToDoDate
             recentDate={this.state.recentDate}
             specificList={this.state.specificList}
             handlePreDateSubmit={this.handlePreDateSubmit}
@@ -332,4 +332,4 @@ class Today extends React.Component {
     );
   }
 }
-export default Today;
+export default ToDoToday;

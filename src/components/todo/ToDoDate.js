@@ -3,7 +3,7 @@ import React from 'react';
 import { FaArrowAltCircleLeft } from 'react-icons/fa';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
-class ShowDate extends React.Component {
+class ToDoDate extends React.Component {
   render() {
     return (
       <>
@@ -47,4 +47,4 @@ class ShowDate extends React.Component {
     );
   }
 }
-export default ShowDate;
+export default ToDoDate;
