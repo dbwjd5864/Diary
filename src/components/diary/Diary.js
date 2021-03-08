@@ -1,12 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 
+import DiaryQuote from './DiaryQuote.js';
 import { FaHeart } from 'react-icons/fa';
 
-// import diaryPhoto from './img/diaryPhoto4.jpeg';
-// import diaryPhoto1 from './img/diaryPhoto1.jpeg';
-
 class Diary extends React.Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
 
@@ -23,6 +22,8 @@ class Diary extends React.Component {
 
   //Get the latest diary when the site is loaded
   componentDidMount() {
+    this._isMounted = true;
+
     axios
       .get('/api/v1/diary/latest')
       .then((result) => {
@@ -32,11 +33,17 @@ class Diary extends React.Component {
           latestOne = display.diary;
         });
 
-        this.setState({
-          recentDiary: latestOne,
-        });
+        if (this._isMounted) {
+          this.setState({
+            recentDiary: latestOne,
+          });
+        }
       })
       .catch((error) => console.log(error));
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   //Change the latest diary when the new diary is submitted
@@ -114,14 +121,24 @@ class Diary extends React.Component {
       <>
         <div className="diary">
           <div className="diaryImgContainer">
-            <img src={''} alt="diaryPhoto" className="diaryPhoto" />
-            <img
-              src={''}
-              id="minMediaPhoto"
-              alt="diaryPhoto"
-              className="diaryPhoto"
-            />
-            <div className="diaryPhotoBG">under</div>
+            <div className="diaryImg_group">
+              <img
+                src="https://source.unsplash.com/random/200x200?sig=1"
+                alt="diaryPhoto"
+                className="diaryPhoto"
+              />
+              <img
+                src="https://source.unsplash.com/random/200x200?sig=2"
+                id="minMediaPhoto"
+                alt="diaryPhoto"
+                className="diaryPhoto"
+              />
+            </div>
+            <div className="diaryQuote">
+              <h2 className="diaryQuote-heading">Quote of the Day</h2>
+
+              <DiaryQuote />
+            </div>
           </div>
 
           <div className="diarySpace">

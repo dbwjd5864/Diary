@@ -7,11 +7,12 @@ import ShowDate from './ToDoDate.js';
 import { FaPencilAlt } from 'react-icons/fa';
 
 class Today extends React.Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
 
     this.state = {
-      images: [],
       toDo: [],
       dates: [],
       specificList: [],
@@ -32,6 +33,8 @@ class Today extends React.Component {
 
   //Get all the to-do lists from the previous date to the recent one and show under the To Do List
   componentDidMount() {
+    this._isMounted = true;
+
     axios
       .get('/api/v1/toDoLists')
       .then((result) => {
@@ -45,11 +48,13 @@ class Today extends React.Component {
           dateArray.push(display.dateWritten);
         });
 
-        this.setState({
-          toDo: listArray,
-          dates: dateArray,
-          recentDate: dateArray[dateArray.length - 1],
-        });
+        if (this._isMounted) {
+          this.setState({
+            toDo: listArray,
+            dates: dateArray,
+            recentDate: dateArray[dateArray.length - 1],
+          });
+        }
 
         let specificDatePromise = axios.get(
           `/api/v1/toDoLists/${this.state.recentDate}`
@@ -63,11 +68,17 @@ class Today extends React.Component {
           lists.push(display.list);
         });
 
-        this.setState({
-          specificList: lists,
-        });
+        if (this._isMounted) {
+          this.setState({
+            specificList: lists,
+          });
+        }
       })
       .catch((error) => console.log(error));
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   //Change the to do list array when the user type new to-do list and update the To Do List

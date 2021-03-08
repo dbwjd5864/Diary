@@ -6,11 +6,10 @@ require('@babel/polyfill');
 module.exports = {
   mode: 'development',
   devtool: 'source-map',
-  entry: { app: ['@babel/polyfill', path.join(__dirname, './src/index.js')] },
+  entry: path.join(__dirname, './src/index.js'),
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/',
   },
   module: {
     rules: [
@@ -45,13 +44,5 @@ module.exports = {
       template: path.join(__dirname, './public/index.html'),
       filename: 'index.html',
     }),
-    // new CopyPlugin({
-    //   patterns: [{ from: 'src/assets', to: '' }],
-    // }),
-    // new ExtractTextPlugin({
-    //   filename: 'styles.css',
-    //   disable: false,
-    //   allChunks: true,
-    // }),
   ],
 };
