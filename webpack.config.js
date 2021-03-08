@@ -19,7 +19,7 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.m?js$/,
+        test: /\.js$|jsx/,
         exclude: /(node_modules)|(build)/,
         use: {
           loader: 'babel-loader',
