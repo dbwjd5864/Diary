@@ -3,9 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 require('@babel/polyfill');
 
+const mode = process.env.NODE_ENV || 'development';
+
 module.exports = {
-  mode: 'development',
-  devtool: 'source-map',
+  mode: mode,
+  devtool: mode === 'development' ? 'inline-source-map' : false,
   entry: path.join(__dirname, './src/index.js'),
   output: {
     filename: 'bundle.js',
