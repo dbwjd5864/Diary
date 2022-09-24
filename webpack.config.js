@@ -14,9 +14,9 @@ module.exports = {
   entry: path.join(__dirname, './src/index.tsx'),
   // output: 번들링 된 결과물을 어디다 둘 것인지에 대한 설정이 가능.
   output: {
-    path: path.resolve(__dirname, 'build/'),
+    path: path.resolve(__dirname, 'build'),
     // 번들이 생기는 경로를 지정. webpack-dev-server도 이를 참조
-    publicPath: '/build/',
+    publicPath: '/',
     filename: '[name].js',
   },
   // export한 JS 모듈이 어떻게 변환되는지 정의한다. 방법은 rules에 정의한 대로 이루어진다.
