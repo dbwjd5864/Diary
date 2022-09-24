@@ -3,8 +3,8 @@ import React from 'react';
 import ToDoToday from './components/todo/ToDoToday';
 import Diary from './components/diary/Diary';
 
-class App extends React.Component {
-  render() {
+const App = () => {
+
     return (
       <>
         <div className="app">
@@ -18,6 +18,5 @@ class App extends React.Component {
         </div>
       </>
     );
-  }
 }
 export default App;
