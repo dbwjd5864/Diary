@@ -13,7 +13,7 @@ class DiaryQuote extends React.Component {
   componentDidMount() {
     axios
       .get('https://api.quotable.io/random')
-      .then((result) => {
+      .then(result => {
         const content = result.data.content;
         const author = result.data.author;
 
@@ -22,7 +22,7 @@ class DiaryQuote extends React.Component {
           author: author,
         });
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }
   render() {
     return (

@@ -37,11 +37,11 @@ class ToDoToday extends React.Component {
 
     axios
       .get('/api/v1/toDoLists')
-      .then((result) => {
+      .then(result => {
         const listArray = [];
         const dateArray = [];
 
-        result.data.forEach((display) => {
+        result.data.forEach(display => {
           for (let i = 0; i < display.list.length; i++) {
             listArray.push(display.list[i].list);
           }
@@ -57,14 +57,14 @@ class ToDoToday extends React.Component {
         }
 
         let specificDatePromise = axios.get(
-          `/api/v1/toDoLists/${this.state.recentDate}`
+          `/api/v1/toDoLists/${this.state.recentDate}`,
         );
         return specificDatePromise;
       })
-      .then((specificResult) => {
+      .then(specificResult => {
         const lists = [];
 
-        specificResult.data.list.forEach((display) => {
+        specificResult.data.list.forEach(display => {
           lists.push(display.list);
         });
 
@@ -74,7 +74,7 @@ class ToDoToday extends React.Component {
           });
         }
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }
 
   componentWillUnmount() {
@@ -86,10 +86,10 @@ class ToDoToday extends React.Component {
     if (prevState.toDo != this.state.toDo) {
       axios
         .get('/api/v1/toDoLists')
-        .then((result) => {
+        .then(result => {
           const dateArray = [];
 
-          result.data.forEach((display) => {
+          result.data.forEach(display => {
             dateArray.push(display.dateWritten);
           });
 
@@ -99,14 +99,14 @@ class ToDoToday extends React.Component {
           });
 
           let specificDatePromise = axios.get(
-            `/api/v1/toDoLists/${this.state.recentDate}`
+            `/api/v1/toDoLists/${this.state.recentDate}`,
           );
           return specificDatePromise;
         })
-        .then((specificResult) => {
+        .then(specificResult => {
           const lists = [];
 
-          specificResult.data.list.forEach((display) => {
+          specificResult.data.list.forEach(display => {
             lists.push(display.list);
           });
 
@@ -114,7 +114,7 @@ class ToDoToday extends React.Component {
             specificList: lists,
           });
         })
-        .catch((error) => console.log(error));
+        .catch(error => console.log(error));
     }
   }
 
@@ -144,7 +144,7 @@ class ToDoToday extends React.Component {
 
       axios
         .post('/api/v1/toDoLists', datePost)
-        .then((result) => {
+        .then(result => {
           const cloneToDoArray = this.state.toDo.slice();
           cloneToDoArray.push(this.state.newToDo);
 
@@ -156,7 +156,7 @@ class ToDoToday extends React.Component {
             errorMessage: { todo: '', date: '' },
           });
         })
-        .catch((error) => console.log(error));
+        .catch(error => console.log(error));
     }
   }
 
@@ -174,10 +174,10 @@ class ToDoToday extends React.Component {
 
     axios
       .get(`/api/v1/toDoLists/${this.state.dates[index - 1]}`)
-      .then((previousDate) => {
+      .then(previousDate => {
         const lists = [];
 
-        previousDate.data.list.forEach((display) => {
+        previousDate.data.list.forEach(display => {
           lists.push(display.list);
         });
 
@@ -186,7 +186,7 @@ class ToDoToday extends React.Component {
           specificList: lists,
         });
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }
 
   //Show the next date's to do lists
@@ -210,10 +210,10 @@ class ToDoToday extends React.Component {
 
     axios
       .get(`/api/v1/toDoLists/${this.state.dates[index]}`)
-      .then((nextDate) => {
+      .then(nextDate => {
         const lists = [];
 
-        nextDate.data.list.forEach((display) => {
+        nextDate.data.list.forEach(display => {
           lists.push(display.list);
         });
 
@@ -222,7 +222,7 @@ class ToDoToday extends React.Component {
           specificList: lists,
         });
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }
 
   //Validate the input data is correct

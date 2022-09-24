@@ -4,11 +4,11 @@ import App from './App';
 import './style.css';
 
 const root = ReactDOM.createRoot(
-    document.getElementById('react-container') as HTMLElement,
+  document.getElementById('react-container') as HTMLElement,
 );
 
 root.render(
-    <React.StrictMode>
-            <App />
-    </React.StrictMode>,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
 );

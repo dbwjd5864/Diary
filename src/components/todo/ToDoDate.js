@@ -24,7 +24,7 @@ class ToDoDate extends React.Component {
             <div className="calendar">
               <h3>{this.props.recentDate}</h3>
               <ul className="calendarList">
-                {this.props.specificList.map((list) => (
+                {this.props.specificList.map(list => (
                   <li key={list}>{list}</li>
                 ))}
               </ul>

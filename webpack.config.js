@@ -77,13 +77,13 @@ module.exports = {
       favicon: path.join(__dirname, './public/favicon.ico'),
       // 주석제거 및 화이트 스페이스 제거
       minify:
-          process.env.NODE_ENV === 'production'
-              ? { collapseWhitespace: true, removeComments: true }
-              : false,
+        process.env.NODE_ENV === 'production'
+          ? { collapseWhitespace: true, removeComments: true }
+          : false,
     }),
     ...(process.env.NODE_ENV === 'production'
-        ? [new MiniCssExtractPlugin({ filename: '[name].css' })]
-        : []),
+      ? [new MiniCssExtractPlugin({ filename: '[name].css' })]
+      : []),
     new CleanWebpackPlugin(),
   ],
 };

@@ -26,10 +26,10 @@ class Diary extends React.Component {
 
     axios
       .get('/api/v1/diary/latest')
-      .then((result) => {
+      .then(result => {
         let latestOne = '';
 
-        result.data.forEach((display) => {
+        result.data.forEach(display => {
           latestOne = display.diary;
         });
 
@@ -39,7 +39,7 @@ class Diary extends React.Component {
           });
         }
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }
 
   componentWillUnmount() {
@@ -51,10 +51,10 @@ class Diary extends React.Component {
     if (prevState.recentDiary != this.state.recentDiary) {
       axios
         .get('/api/v1/diary/latest')
-        .then((result) => {
+        .then(result => {
           const latestOne = '';
 
-          result.data.forEach((display) => {
+          result.data.forEach(display => {
             latestOne = display.diary;
           });
 
@@ -62,7 +62,7 @@ class Diary extends React.Component {
             recentDiary: latestOne,
           });
         })
-        .catch((error) => console.log(error));
+        .catch(error => console.log(error));
     }
   }
 
@@ -77,7 +77,7 @@ class Diary extends React.Component {
 
       axios
         .post('/api/v1/diary', newDiary)
-        .then((result) => {
+        .then(result => {
           const cloneText = this.state.newText;
 
           this.setState({
@@ -86,7 +86,7 @@ class Diary extends React.Component {
             errorMessage: { diary: '' },
           });
         })
-        .catch((error) => console.log(error));
+        .catch(error => console.log(error));
     }
   }
 
