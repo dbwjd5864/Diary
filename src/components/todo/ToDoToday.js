@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import ToDo from './ToDo.js';
+import ToDo from './ToDo.tsx';
 import ToDoDate from './ToDoDate.js';
 
 import { FaPencilAlt } from 'react-icons/fa';
@@ -81,7 +81,7 @@ class ToDoToday extends React.Component {
     this._isMounted = false;
   }
 
-  //Change the to do list array when the user type new to-do list and update the To Do List
+  // Change the to do list array when the user type new to-do list and update the To Do List
   componentDidUpdate(prevProps, prevState) {
     if (prevState.toDo != this.state.toDo) {
       axios
