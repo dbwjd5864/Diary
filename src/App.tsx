@@ -2,18 +2,20 @@ import React from 'react';
 
 import ToDoToday from './components/todo/ToDoToday';
 import Diary from './components/diary/Diary';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import NotFound from './page/NotFound';
+import Home from './page/Home';
 
 const App = () => {
   return (
-    <div className="app">
-      <nav className="nav-bar">
-        <ul>
-          <li className="nav-element">How Is Your Day?</li>
-        </ul>
-      </nav>
-      <ToDoToday />
-      <Diary />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/todo" element={<ToDoToday />} />
+        <Route path="/diary" element={<Diary />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 export default App;
