@@ -1,10 +1,11 @@
 import React from 'react';
 
 import ToDoToday from './components/todo/ToDoToday';
-import Diary from './components/diary/Diary';
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NotFound from './page/NotFound';
 import Home from './page/Home';
+import Diary from './page/Diary';
 
 const App = () => {
   return (

@@ -3,7 +3,7 @@ import { DiaryContainer } from './styles';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Diary = () => {
+const DailyDiary = () => {
   const [recentDiary, setRecentDiary] = useState('');
   const [newText, setNewText] = useState('');
   const [isValid, setIsValid] = useState(false);
@@ -84,4 +84,4 @@ const Diary = () => {
   );
 };
 
-export default Diary;
+export default DailyDiary;
