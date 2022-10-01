@@ -1,7 +1,17 @@
 import { FaHeart } from 'react-icons/fa';
-import { DiaryContainer } from './styles';
+import {
+  DiaryContainer,
+  DiaryForm,
+  DiaryHeader,
+  Failure,
+  RecentDiary,
+  SubmitBtn,
+  Success,
+  Textarea,
+} from './styles';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { handleErrors } from '../../utils/handleErrors';
 
 const DailyDiary = () => {
   const [recentDiary, setRecentDiary] = useState('');
@@ -13,43 +23,44 @@ const DailyDiary = () => {
     getLatestDiary();
   }, []);
 
-  const getLatestDiary = async () => {
-    const result = await axios.get('/api/v1/diary/latest');
-    let latestOne = '';
+  const getLatestDiary = handleErrors(async () => {
+    try {
+      const result = await axios.get('/api/v1/diary/latest');
 
-    result.data.forEach((display: { diary: string }) => {
-      latestOne = display.diary;
-    });
+      setRecentDiary(result.data);
+    } catch (err) {
+      console.error(err);
+    }
+  });
 
-    setRecentDiary(latestOne);
-  };
-
-  const handleTextSubmit = (e: React.SyntheticEvent) => {
+  const handleTextSubmit = handleErrors(async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    handleValidation();
-    if (isValid) {
+    if (handleValidation()) {
       const newDiary = {
         diary: newText,
       };
 
-      axios
-        .post('/api/v1/diary', newDiary)
-        .then(() => {
-          setRecentDiary(newDiary.diary);
-          setNewText('');
-          setErrorMessage('');
-        })
-        .catch(error => console.log(error));
+      try {
+        const result = await axios.post('/api/v1/diary', newDiary);
+
+        setRecentDiary(result.data.diary);
+        setNewText('');
+        setErrorMessage('');
+      } catch (err) {
+        console.error(err);
+      }
     }
-  };
+  });
 
   const handleValidation = () => {
-    // Diary Text validation
-    if (newText.length < 8) {
-      setIsValid(false);
-      setErrorMessage('Please enter more than 8 characters');
+    // Diary Text length validation
+    if (newText.length >= 5) {
+      return true;
     }
+
+    setIsValid(false);
+    setErrorMessage('Please enter more than 5 characters');
   };
 
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -59,27 +70,25 @@ const DailyDiary = () => {
 
   return (
     <DiaryContainer>
-      <h2 className="diaryHeading">Dear Diary</h2>
-      <div className="diaryForm">
-        <div className="dearMyself">{recentDiary}</div>
+      <DiaryHeader>Dear Diary</DiaryHeader>
+      <DiaryForm>
+        <RecentDiary>{recentDiary}</RecentDiary>
         <form onSubmit={handleTextSubmit}>
-          <label className="visually-hidden"> Write your daily diary </label>
-          <textarea
-            className="text"
+          <Textarea
             value={newText}
             onChange={handleTextChange}
-            placeholder="Write a Daily Diary"></textarea>
-          <label className="visually-hidden"> Submit your diary </label>
-          <button type="submit" className="submitText">
+            placeholder="Write a Daily Diary"></Textarea>
+
+          <SubmitBtn type="submit">
             <FaHeart aria-hidden="true" />
-          </button>
+          </SubmitBtn>
         </form>
         {isValid ? (
-          <small className="success">Successfully submitted</small>
+          <Success>Successfully submitted</Success>
         ) : (
-          <small className="failure">{errorMessage}</small>
+          <Failure>{errorMessage}</Failure>
         )}
-      </div>
+      </DiaryForm>
     </DiaryContainer>
   );
 };
