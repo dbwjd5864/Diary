@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import ToDo from './ToDo.tsx';
+import ToDoList from './ToDoList.tsx';
 import ToDoDate from './ToDoDate.js';
 
 import { FaPencilAlt } from 'react-icons/fa';
@@ -31,7 +31,7 @@ class ToDoToday extends React.Component {
     this.handleNextDateSubmit = this.handleNextDateSubmit.bind(this);
   }
 
-  //Get all the to-do lists from the previous date to the recent one and show under the To Do List
+  // Get all the to-do lists from the previous date to the recent one and show under the To Do List
   componentDidMount() {
     this._isMounted = true;
 
@@ -56,7 +56,7 @@ class ToDoToday extends React.Component {
           });
         }
 
-        let specificDatePromise = axios.get(
+        const specificDatePromise = axios.get(
           `/api/v1/toDoLists/${this.state.recentDate}`,
         );
         return specificDatePromise;
@@ -83,7 +83,7 @@ class ToDoToday extends React.Component {
 
   // Change the to do list array when the user type new to-do list and update the To Do List
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.toDo != this.state.toDo) {
+    if (prevState.toDo !== this.state.toDo) {
       axios
         .get('/api/v1/toDoLists')
         .then(result => {
@@ -98,7 +98,7 @@ class ToDoToday extends React.Component {
             recentDate: dateArray[dateArray.length - 1],
           });
 
-          let specificDatePromise = axios.get(
+          const specificDatePromise = axios.get(
             `/api/v1/toDoLists/${this.state.recentDate}`,
           );
           return specificDatePromise;
@@ -118,21 +118,21 @@ class ToDoToday extends React.Component {
     }
   }
 
-  //OnChange for the input of to do
+  // OnChange for the input of to do
   handleToDoUpdate(event) {
     this.setState({
       newToDo: event.target.value,
     });
   }
 
-  //OnChange for the input of date
+  // OnChange for the input of date
   handleDateUpdate(event) {
     this.setState({
       currentDate: event.target.value,
     });
   }
 
-  //Post new to do list and date
+  // Post new to do list and date
   handleToDoSubmit(event) {
     event.preventDefault();
 
@@ -160,12 +160,12 @@ class ToDoToday extends React.Component {
     }
   }
 
-  //Show the previous date's to do lists
+  // Show the previous date's to do lists
   handlePreDateSubmit(event) {
     event.preventDefault();
 
     let index = this.state.dates.indexOf(this.state.recentDate);
-    if (index == 0) {
+    if (index === 0) {
       this.setState({
         recentDate: this.state.dates[this.state.dates.length - 1],
       });
@@ -189,17 +189,17 @@ class ToDoToday extends React.Component {
       .catch(error => console.log(error));
   }
 
-  //Show the next date's to do lists
+  // Show the next date's to do lists
   handleNextDateSubmit(event) {
     event.preventDefault();
 
     let index = this.state.dates.indexOf(this.state.recentDate);
-    if (index == this.state.dates.length - 1) {
+    if (index === this.state.dates.length - 1) {
       this.setState({
         recentDate: this.state.dates[0],
       });
       index = 0;
-    } else if (index == 0) {
+    } else if (index === 0) {
       index++;
       this.setState({
         recentDate: this.state.dates[index],
@@ -225,15 +225,15 @@ class ToDoToday extends React.Component {
       .catch(error => console.log(error));
   }
 
-  //Validate the input data is correct
+  // Validate the input data is correct
   handleValidation() {
-    let errorArray = { todo: '', date: '' };
+    const errorArray = { todo: '', date: '' };
     let todoValidClone = true;
     let dateValidClone = true;
     let inputValid = true;
-    let expressionDate = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+    const expressionDate = /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
 
-    //todo validation
+    // todo validation
     if (this.state.newToDo.length < 5) {
       todoValidClone = false;
       errorArray.todo = 'Please enter more than 5 characters';
@@ -241,8 +241,8 @@ class ToDoToday extends React.Component {
       errorArray.todo = '';
     }
 
-    //date validation
-    if (this.state.currentDate.length == 0) {
+    // date validation
+    if (this.state.currentDate.length === 0) {
       dateValidClone = false;
       errorArray.date = 'Please enter a date';
     } else if (!this.state.currentDate.match(expressionDate)) {
@@ -270,7 +270,7 @@ class ToDoToday extends React.Component {
     return (
       <>
         <div className="today">
-          <ToDo lists={this.state.toDo} />
+          <ToDoList lists={this.state.toDo} />
           <div className="newSubmit">
             <form onSubmit={this.handleToDoSubmit}>
               <label>

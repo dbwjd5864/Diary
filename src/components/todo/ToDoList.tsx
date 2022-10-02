@@ -5,7 +5,7 @@ interface ToDoProps {
   lists: any[];
 }
 
-const ToDo = ({ lists }: ToDoProps) => {
+const ToDoList = ({ lists }: ToDoProps) => {
   return (
     <>
       <div className="listBox">
@@ -26,4 +26,4 @@ const ToDo = ({ lists }: ToDoProps) => {
     </>
   );
 };
-export default ToDo;
+export default ToDoList;
