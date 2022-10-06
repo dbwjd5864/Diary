@@ -1,5 +1,12 @@
 import React from 'react';
-import { MdCheckBoxOutlineBlank } from 'react-icons/md';
+import {
+  CheckBoxOutlineBlank,
+  Fieldset,
+  Legend,
+  ListContainer,
+  ToDoListContainer,
+  ToDoListItem,
+} from './styles';
 
 interface ToDoProps {
   lists: any[];
@@ -8,21 +15,21 @@ interface ToDoProps {
 const ToDoList = ({ lists }: ToDoProps) => {
   return (
     <>
-      <div className="listBox">
-        <fieldset>
-          <legend>To Do List</legend>
-          <ul className="toDo-list">
+      <ListContainer>
+        <Fieldset>
+          <Legend>To Do List</Legend>
+          <ToDoListContainer>
             {lists.map(list => {
               return (
-                <li key={list}>
-                  <MdCheckBoxOutlineBlank aria-hidden="true" />
+                <ToDoListItem key={list}>
+                  <CheckBoxOutlineBlank aria-hidden="true" />
                   {list}
-                </li>
+                </ToDoListItem>
               );
             })}
-          </ul>
-        </fieldset>
-      </div>
+          </ToDoListContainer>
+        </Fieldset>
+      </ListContainer>
     </>
   );
 };
