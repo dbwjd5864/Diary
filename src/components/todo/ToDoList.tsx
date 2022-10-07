@@ -9,7 +9,7 @@ import {
 } from './styles';
 
 interface ToDoProps {
-  lists: any[];
+  lists: string[];
 }
 
 const ToDoList = ({ lists }: ToDoProps) => {
