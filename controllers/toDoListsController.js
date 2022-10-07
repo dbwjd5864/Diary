@@ -1,32 +1,40 @@
 const ListsDate = require('../models/ListsDate.js');
 const { ToDoLists } = require('../models/ToDoLists.js');
 
-//Get all the to-do lists
+// Get all the to-do lists
 exports.getLists = (req, res) => {
   ListsDate.find({}, { _id: 0 })
     .sort({ dateWritten: 1 })
     .exec()
     .then(results => {
-      res.status(200).send(results);
+      const data = [];
+      for (let i = 0; i < results.length; i++) {
+        const { dateWritten, list } = results[i];
+        const listArray = list.map(({ list }) => list);
+
+        data.push({ dateWritten, list: listArray });
+      }
+
+      res.status(200).send(data);
     })
-    .catch(error => {
+    .catch(() => {
       res.status(404).send('Resource not found.');
     });
 };
 
-//Get the to-do lists with the passed date value
+// Get the to-do lists with the passed date value
 exports.getList = (req, res) => {
   ListsDate.findOne({ dateWritten: req.params.date }, { _id: 0 })
     .exec()
     .then(results => {
       res.status(200).send(results);
     })
-    .catch(error => {
+    .catch(() => {
       res.status(404).send('Resource not found.');
     });
 };
 
-//Post the new to-do list
+// Post the new to-do list
 exports.postList = (req, res) => {
   ListsDate.findOne({ dateWritten: req.body.date })
     .exec()
