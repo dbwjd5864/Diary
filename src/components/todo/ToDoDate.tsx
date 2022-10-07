@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
+import { Button, Calendar, CalendarContainer, CalendarList } from './styles';
 
 interface ToDoDateProps {
   recentDate: string;
@@ -16,42 +17,26 @@ const ToDoDate = ({
   handlePreDateSubmit,
 }: ToDoDateProps) => {
   return (
-    <>
-      <div className="showDate">
-        <div className="calendarContainer">
-          <label className="visually-hidden">
-            {' '}
-            See your previous date's to-do lists{' '}
-          </label>
-          <button
-            onClick={handlePreDateSubmit}
-            type="button"
-            className="previousDate">
-            <FaArrowAltCircleLeft aria-hidden="true" />
-          </button>
+    <div>
+      <CalendarContainer>
+        <Button onClick={handlePreDateSubmit} type="button">
+          <FaArrowAltCircleLeft aria-hidden="true" />
+        </Button>
 
-          <div className="calendar">
-            <h3>{recentDate}</h3>
-            <ul className="calendarList">
-              {specificList.map(list => (
-                <li key={list}>{list}</li>
-              ))}
-            </ul>
-          </div>
+        <Calendar>
+          <h3>{recentDate}</h3>
+          <CalendarList>
+            {specificList.map(list => (
+              <li key={list}>{list}</li>
+            ))}
+          </CalendarList>
+        </Calendar>
 
-          <label className="visually-hidden">
-            {' '}
-            See your next date's to-do lists{' '}
-          </label>
-          <button
-            onClick={handleNextDateSubmit}
-            type="button"
-            className="nextDate">
-            <FaArrowAltCircleRight aria-hidden="true" />
-          </button>
-        </div>
-      </div>
-    </>
+        <Button onClick={handleNextDateSubmit} type="button">
+          <FaArrowAltCircleRight aria-hidden="true" />
+        </Button>
+      </CalendarContainer>
+    </div>
   );
 };
 export default ToDoDate;

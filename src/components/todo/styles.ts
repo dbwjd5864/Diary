@@ -33,3 +33,25 @@ export const CheckBoxOutlineBlank = styled(MdCheckBoxOutlineBlank)`
   padding-right: 6px;
   margin-top: 2px;
 `;
+
+export const CalendarContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+export const Button = styled.button`
+  border: none;
+  font-size: 1.5em;
+  background-color: transparent;
+`;
+
+export const Calendar = styled.div`
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+`;
+
+export const CalendarList = styled.ul`
+  padding-left: 0;
+  list-style-type: none;
+`;
