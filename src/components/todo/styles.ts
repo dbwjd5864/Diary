@@ -55,3 +55,55 @@ export const CalendarList = styled.ul`
   padding-left: 0;
   list-style-type: none;
 `;
+
+export const FormContainer = styled.div`
+  background: #d5c3b0;
+`;
+
+export const Form = styled.form`
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+`;
+
+export const Label = styled.label`
+  border-bottom: 3px solid #f4ead8;
+  padding-bottom: 5px;
+  margin: 5px 0px;
+`;
+
+export const Input = styled.input`
+  border: none;
+  background-color: #f4ead8;
+`;
+
+export const ToDoButton = styled.button`
+  border: none;
+  background-color: transparent;
+  color: #f4ead8;
+  font-size: 1.5em;
+  padding: 5px 10px 0 10px;
+  cursor: pointer;
+`;
+
+export const SubmitResult = styled.div`
+  text-align: center;
+`;
+
+export const Success = styled.small`
+  color: blue;
+  font-size: 1.1em;
+`;
+
+export const FailureContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4px;
+`;
+
+export const Failure = styled.small`
+  color: red;
+  font-size: 1.1em;
+`;
